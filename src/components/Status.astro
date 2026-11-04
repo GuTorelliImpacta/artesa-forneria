@@ -1,0 +1,22 @@
+---
+import site from '../data/site.json';
+---
+<div class="status-selo" data-status data-horarios={JSON.stringify(site.horarios)} role="status" aria-live="polite">
+  <span class="status-titulo" data-status-titulo>Horários abaixo</span>
+  <span class="status-detalhe" data-status-detalhe>quinta a domingo</span>
+</div>
+<script>
+  import { calcularStatus, agoraSaoPaulo } from '../lib/status.js';
+  document.querySelectorAll('[data-status]').forEach((el) => {
+    const horarios = JSON.parse(el.getAttribute('data-horarios'));
+    const render = () => {
+      const { dia, minutos } = agoraSaoPaulo();
+      const s = calcularStatus(horarios, dia, minutos);
+      el.querySelector('[data-status-titulo]').textContent = s.titulo;
+      el.querySelector('[data-status-detalhe]').textContent = s.detalhe;
+      el.classList.toggle('aberto', s.aberto);
+    };
+    render();
+    setInterval(render, 60000);
+  });
+</script>

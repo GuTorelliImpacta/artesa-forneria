@@ -1,0 +1,22 @@
+---
+import site from '../data/site.json';
+import { telLink, waLink } from '../lib/links.js';
+---
+<footer class="rodape">
+  <div class="tijolos" aria-hidden="true"></div>
+  <div class="rodape-in">
+    <p class="rodape-nome">Artesã <em>Forneria</em></p>
+    <div class="rodape-grid">
+      <address>
+        <p>{site.endereco.rua}<br />{site.endereco.bairro}, {site.endereco.cidade} – {site.endereco.uf}<br />CEP {site.endereco.cep}</p>
+        <p><a href={telLink}>{site.telefone.exibicao}</a><br /><a href={waLink} rel="noopener noreferrer" target="_blank">WhatsApp</a> · <a href={site.instagram} rel="noopener noreferrer" target="_blank">Instagram</a></p>
+      </address>
+      <p>Quinta, 18h–23h<br />Sexta e sábado, 18h–23h30<br />Domingo, 12h–17h<br />Segunda a quarta, fechado</p>
+      <nav aria-label="Rodapé">
+        <a href="/cardapio/">Cardápio</a><a href="/ambiente/">Ambiente</a><a href="/visite/">Visite</a><a href="/privacidade/">Privacidade</a>
+      </nav>
+    </div>
+    <p class="aviso">Venda de bebidas alcoólicas proibida para menores de 18 anos. Beba com moderação.</p>
+    <p class="aviso">© {new Date().getFullYear()} Artesã Forneria.</p>
+  </div>
+</footer>

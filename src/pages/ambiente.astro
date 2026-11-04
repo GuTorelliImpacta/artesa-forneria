@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Reveal from '../components/Reveal.astro';
+import fachada from '../assets/fachada-letreiro.jpg';
+import salao from '../assets/salao-luzes-tijolo.jpg';
+import forno from '../assets/pizza-branca-forno.jpg';
+import degust from '../assets/degustacao-molhos.jpg';
+---
+<Base
+  title="Ambiente | Artesã Forneria, Vila Irmãos Arnoni"
+  description="Conheça o ambiente da Artesã Forneria: fachada preta, salão de tijolo aparente, parede verde, lâmpadas acesas e adega de vinhos."
+  path="/ambiente/"
+>
+  <div class="pagina-topo wrap">
+    <h1>O ambiente</h1>
+    <p>Uma casa de porta de madeira e letreiro dourado, que por dentro é tijolo, luz baixa e vinho.</p>
+  </div>
+  <div class="wrap blocos">
+    <article class="bloco rev">
+      <figure><Image src={fachada} alt="Fachada da Artesã Forneria à noite, com letreiro dourado e porta aberta" widths={[640, 960, 1206]} sizes="(min-width:900px) 620px, 100vw" loading="eager" fetchpriority="high" /></figure>
+      <div><h2>A porta preta</h2><p>Por fora, parede preta, letreiro dourado e vasos de planta. Os degraus de tijolo levam ao salão.</p></div>
+    </article>
+    <article class="bloco rev">
+      <figure><Image src={salao} alt="Lâmpadas de filamento, cortinas de renda e parede de tijolo no salão" widths={[640, 960, 1206]} sizes="(min-width:900px) 620px, 100vw" /></figure>
+      <div><h2>Tijolo, luz e vinho</h2><p>Lâmpadas de filamento no teto, cortinas de renda na janela, parede verde e uma adega de madeira com garrafas à vista.</p></div>
+    </article>
+    <article class="bloco rev">
+      <figure><Image src={forno} alt="Pizzaiolo ajeitando pizza branca na caixa de viagem" widths={[360, 490]} sizes="(min-width:900px) 480px, 100vw" /></figure>
+      <div><h2>A cozinha</h2><p>Bancadas de aço, pratos de madeira empilhados e a pizza saindo do forno.</p></div>
+    </article>
+    <article class="bloco rev">
+      <figure><Image src={degust} alt="Mesa de degustação com molhos, azeites e limões" widths={[640, 876]} sizes="(min-width:900px) 620px, 100vw" /></figure>
+      <div><h2>Eventos e degustações</h2><p>A casa já recebeu degustações de molhos e queijos. Para saber das próximas, siga a gente no Instagram.</p></div>
+    </article>
+  </div>
+  <section class="cta-final">
+    <div class="wrap">
+      <h2>Reserve a sua mesa.</h2>
+      <div class="linha"><a class="btn" href="/visite/">Horários e endereço</a></div>
+    </div>
+  </section>
+  <Reveal />
+</Base>

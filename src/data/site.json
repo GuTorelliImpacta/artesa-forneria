@@ -1,0 +1,33 @@
+{
+  "nome": "Artesã Forneria",
+  "slogan": "Pizza de forno, vinho e luz baixa na Zona Norte.",
+  "endereco": {
+    "rua": "R. Padre Charton, 109",
+    "bairro": "Vila Irmãos Arnoni",
+    "cidade": "São Paulo",
+    "uf": "SP",
+    "cep": "02375-070",
+    "linha": "R. Padre Charton, 109 – Vila Irmãos Arnoni, São Paulo – SP, 02375-070"
+  },
+  "telefone": { "exibicao": "(11) 2994-4246", "tel": "+551129944246" },
+  "whatsapp": {
+    "numero": "5511916501473",
+    "exibicao": "(11) 91650-1473",
+    "confirmado": false,
+    "mensagem": "Olá! Gostaria de reservar uma mesa na Artesã Forneria para ___ pessoas, dia ___ às ___."
+  },
+  "cardapioUrl": "https://delivery.yooga.app",
+  "instagram": "https://www.instagram.com/artesaforneria",
+  "faixaPreco": "R$ 60–140 por pessoa",
+  "mapaEmbed": "https://www.google.com/maps?q=Artes%C3%A3+Forneria%2C+R.+Padre+Charton%2C+109+-+Vila+Irm%C3%A3os+Arnoni%2C+S%C3%A3o+Paulo+-+SP%2C+02375-070&output=embed",
+  "mapaRota": "https://www.google.com/maps/dir/?api=1&destination=Artes%C3%A3+Forneria%2C+R.+Padre+Charton%2C+109+-+Vila+Irm%C3%A3os+Arnoni%2C+S%C3%A3o+Paulo+-+SP%2C+02375-070",
+  "horarios": [
+    { "dia": 0, "nome": "Domingo", "abre": "12:00", "fecha": "17:00" },
+    { "dia": 1, "nome": "Segunda-feira", "abre": null, "fecha": null },
+    { "dia": 2, "nome": "Terça-feira", "abre": null, "fecha": null },
+    { "dia": 3, "nome": "Quarta-feira", "abre": null, "fecha": null },
+    { "dia": 4, "nome": "Quinta-feira", "abre": "18:00", "fecha": "23:00" },
+    { "dia": 5, "nome": "Sexta-feira", "abre": "18:00", "fecha": "23:30" },
+    { "dia": 6, "nome": "Sábado", "abre": "18:00", "fecha": "23:30" }
+  ]
+}
