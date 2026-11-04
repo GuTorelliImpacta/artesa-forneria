@@ -1,0 +1,72 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+import site from '../data/site.json';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactBar from '../components/ContactBar.astro';
+
+interface Props { title: string; description: string; path?: string; faq?: boolean; }
+const { title, description, path = '/', faq = false } = Astro.props;
+const canonical = new URL(path, Astro.site).href;
+const og = new URL('/og.jpg', Astro.site).href;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: site.nome,
+  url: Astro.site.href,
+  image: og,
+  servesCuisine: 'Pizza',
+  priceRange: '$$',
+  telephone: site.telefone.tel,
+  address: { '@type': 'PostalAddress', streetAddress: site.endereco.rua, addressLocality: 'São Paulo', addressRegion: 'SP', postalCode: site.endereco.cep, addressCountry: 'BR' },
+  openingHoursSpecification: site.horarios.filter((h) => h.abre).map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][h.dia],
+    opens: h.abre, closes: h.fecha,
+  })),
+  sameAs: [site.instagram],
+  hasMenu: site.cardapioUrl,
+};
+const faqLd = faq ? {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: [
+    ['Quando a Artesã Forneria abre?', 'Quinta, das 18h às 23h; sexta e sábado, das 18h às 23h30; domingo, das 12h às 17h. Fechamos de segunda a quarta.'],
+    ['Onde fica a Artesã Forneria?', `${site.endereco.linha}.`],
+    ['Tem cardápio online?', 'Sim. O cardápio completo está disponível em delivery.yooga.app.'],
+    ['Como reservar uma mesa?', `Ligue para ${site.telefone.exibicao} ou chame no WhatsApp.`],
+    ['Qual a faixa de preço?', `${site.faixaPreco}, segundo informações de clientes no Google.`],
+  ].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+} : null;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0B0A09" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={site.nome} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <Header current={path} />
+    <main id="conteudo"><slot /></main>
+    <Footer />
+    <ContactBar />
+  </body>
+</html>

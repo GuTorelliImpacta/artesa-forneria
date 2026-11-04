@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Política de privacidade | Artesã Forneria" description="Como este site trata dados: não coletamos dados pessoais por formulário e o mapa é fornecido pelo Google." path="/privacidade/">
+  <div class="pagina-topo wrap"><h1>Privacidade</h1></div>
+  <div class="wrap blocos texto-legal">
+    <div>
+      <p>Este site é informativo. Ele não tem formulário, login, cadastro nem newsletter e não coleta dados pessoais diretamente.</p>
+      <h2>Contato</h2>
+      <p>Ao tocar em “Ligar” ou “WhatsApp”, você sai do site e usa o aplicativo do seu aparelho. Os dados que você enviar pelo WhatsApp são tratados pela Meta, conforme a política do serviço, e por nós para responder ao seu pedido de reserva.</p>
+      <h2>Mapa do Google</h2>
+      <p>O mapa na página inicial e em “Visite” é fornecido pelo Google Maps, serviço de terceiro. Ao carregar o mapa, o Google pode tratar dados como endereço IP e usar cookies, conforme a <a class="link-seta" href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">política de privacidade do Google</a>.</p>
+      <h2>Estatísticas</h2>
+      <p>Não usamos cookies de rastreamento nem ferramentas de análise. Se isso mudar, pediremos seu consentimento antes.</p>
+      <h2>Seus direitos (LGPD)</h2>
+      <p>Você pode pedir informações, correção ou exclusão de dados que tenha nos enviado, ligando para {site.telefone.exibicao}.</p>
+      <h2>Controlador</h2>
+      <p>Artesã Forneria, {site.endereco.linha}.</p>
+    </div>
+  </div>
+</Base>

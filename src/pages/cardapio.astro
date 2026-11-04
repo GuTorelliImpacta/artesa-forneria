@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Reveal from '../components/Reveal.astro';
+import site from '../data/site.json';
+import pizza from '../assets/pizza-prosciutto.jpg';
+import forno from '../assets/pizza-branca-forno.jpg';
+import degust from '../assets/degustacao-molhos.jpg';
+import salao from '../assets/salao-luzes-tijolo.jpg';
+---
+<Base
+  title="Cardápio | Artesã Forneria, Zona Norte de São Paulo"
+  description="Pizzas, vinhos e pratos para happy hour da Artesã Forneria. Veja o cardápio completo e os preços atualizados no cardápio online."
+  path="/cardapio/"
+>
+  <div class="pagina-topo wrap">
+    <h1>Cardápio</h1>
+    <p>Pizzas de forno, vinhos e pratos para o happy hour. Sabores e preços mudam, por isso o cardápio completo fica sempre atualizado online.</p>
+    <p><a class="btn btn-ouro" href={site.cardapioUrl} target="_blank" rel="noopener noreferrer">Abrir o cardápio completo</a></p>
+  </div>
+  <div class="wrap blocos">
+    <article class="bloco rev">
+      <figure><Image src={pizza} alt="Pizza de prosciutto, rúcula e doce de figo em tábua de madeira" widths={[480, 720, 1000]} sizes="(min-width:900px) 600px, 100vw" loading="eager" fetchpriority="high" /></figure>
+      <div>
+        <h2>Pizzas de forno</h2>
+        <p>Borda alta e marcada pelo fogo. Uma delas leva prosciutto, rúcula e doce de figo sobre molho de tomate.</p>
+        <p>A pizza branca, dourada e com queijo, também sai do forno para a mesa ou para viagem.</p>
+      </div>
+    </article>
+    <article class="bloco rev">
+      <figure><Image src={salao} alt="Adega de madeira com garrafas de vinho no salão da Artesã Forneria" widths={[640, 960, 1206]} sizes="(min-width:900px) 600px, 100vw" /></figure>
+      <div>
+        <h2>Vinhos na parede</h2>
+        <p>Uma adega de madeira à vista no salão, com garrafas de vinho também na parede.</p>
+      </div>
+    </article>
+    <article class="bloco rev">
+      <figure><Image src={degust} alt="Potinhos de molhos, azeites e limão em mesa de degustação" widths={[640, 876]} sizes="(min-width:900px) 600px, 100vw" /></figure>
+      <div>
+        <h2>Pratos para o happy hour</h2>
+        <p>Pratos para happy hour de quinta a sábado, a partir das 18h. Veja as opções no cardápio online. Já fizemos degustações de molhos e queijos.</p>
+      </div>
+    </article>
+    <article class="bloco rev">
+      <figure><Image src={forno} alt="Pizza branca sendo colocada na caixa para viagem" widths={[360, 490]} sizes="(min-width:900px) 480px, 100vw" /></figure>
+      <div>
+        <h2>Para viagem</h2>
+        <p>Peça pelo cardápio online ou ligue para {site.telefone.exibicao}.</p>
+        <p>Faixa de preço: {site.faixaPreco}, informada por clientes no Google.</p>
+      </div>
+    </article>
+  </div>
+  <section class="cta-final">
+    <div class="wrap">
+      <h2>Veja tudo no cardápio online.</h2>
+      <div class="linha">
+        <a class="btn" href={site.cardapioUrl} target="_blank" rel="noopener noreferrer">Abrir o cardápio</a>
+        <a class="btn" href="/visite/">Como chegar</a>
+      </div>
+    </div>
+  </section>
+  <Reveal />
+</Base>

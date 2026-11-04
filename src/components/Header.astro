@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.jpg';
+import { telLink } from '../lib/links.js';
+const { current = '/' } = Astro.props;
+const links = [['/', 'Início'], ['/cardapio/', 'Cardápio'], ['/ambiente/', 'Ambiente'], ['/visite/', 'Visite']];
+---
+<header class="topo">
+  <a class="marca" href="/" aria-label="Artesã Forneria, página inicial">
+    <span class="selo-logo"><Image src={logo} alt="" width={96} height={96} loading="eager" /></span>
+    <span class="marca-nome">Artesã <em>Forneria</em></span>
+  </a>
+  <nav class="nav-desk" aria-label="Principal">
+    {links.map(([h, t]) => <a href={h} aria-current={current === h ? 'page' : undefined}>{t}</a>)}
+    <a class="btn btn-ouro" href={telLink}>Ligar</a>
+  </nav>
+  <details class="nav-mob">
+    <summary aria-label="Abrir menu"><span class="hamb" aria-hidden="true"></span><span>Menu</span></summary>
+    <nav aria-label="Principal (celular)">
+      {links.map(([h, t]) => <a href={h} aria-current={current === h ? 'page' : undefined}>{t}</a>)}
+    </nav>
+  </details>
+</header>

@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Status from '../components/Status.astro';
+import Horarios from '../components/Horarios.astro';
+import Mapa from '../components/Mapa.astro';
+import Reveal from '../components/Reveal.astro';
+import site from '../data/site.json';
+import { telLink, waLink } from '../lib/links.js';
+import fachada from '../assets/fachada-letreiro.jpg';
+import salao from '../assets/salao-luzes-tijolo.jpg';
+import pizza from '../assets/pizza-prosciutto.jpg';
+import forno from '../assets/pizza-branca-forno.jpg';
+import degust from '../assets/degustacao-molhos.jpg';
+---
+<Base
+  title="Artesã Forneria | Pizza e vinho na Zona Norte de São Paulo"
+  description="Pizza de forno, vinho e ambiente de tijolo à vista na Vila Irmãos Arnoni, Zona Norte de São Paulo. Quinta a domingo. Reserve pelo telefone ou WhatsApp."
+  path="/"
+  faq
+>
+  <section class="hero">
+    <div class="wrap">
+      <h1><span>Pizza de forno,</span> <span>vinho e luz baixa</span> <span>na Zona Norte.</span></h1>
+      <p class="hero-sub">Artesã Forneria, na R. Padre Charton, 109, Vila Irmãos Arnoni. Aberta de quinta a domingo.</p>
+      <div class="hero-grade">
+        <div class="hero-acoes">
+          <a class="btn btn-ouro" href={waLink} target="_blank" rel="noopener noreferrer">Reservar pelo WhatsApp</a>
+          <a class="btn" href={telLink}>Ligar {site.telefone.exibicao}</a>
+          <a class="link-seta" href="/cardapio/">Ver cardápio</a>
+          <Status />
+        </div>
+        <figure class="hero-foto">
+          <Image src={fachada} alt="Fachada preta da Artesã Forneria à noite, com o letreiro dourado, a porta de madeira aberta e vasos de plantas" widths={[640, 960, 1206]} sizes="(min-width:900px) 800px, 100vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="tijolos" aria-hidden="true"></div>
+
+  <section class="casa" id="a-casa">
+    <div class="wrap">
+      <div class="casa-grade">
+        <h2 class="rev">Tijolo à vista, lâmpadas acesas e uma adega à mão.</h2>
+        <div class="rev d1">
+          <p class="lead">A Artesã Forneria é o lugar para dividir uma pizza de borda alta e escolher um vinho sem sair da Zona Norte.</p>
+          <p>Um salão estreito, de parede verde, tijolo aparente e vinhos na parede. Abrimos à noite de quinta a sábado, com pratos para happy hour, e no almoço de domingo.</p>
+        </div>
+      </div>
+      <figure class="faixa-foto rev">
+        <Image src={salao} alt="Teto do salão com lâmpadas de filamento, cortinas de renda, parede de tijolo aparente e garrafas de vinho na adega de madeira" widths={[640, 960, 1206]} sizes="(min-width:1320px) 1224px, 100vw" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="destaque" id="destaque">
+    <div class="wrap">
+      <div class="destaque-grade">
+        <div class="arco rev">
+          <Image src={pizza} alt="Pizza com molho de tomate, fatias de prosciutto, folhas de rúcula e colheradas de doce de figo, em tábua de madeira" widths={[480, 720, 1000]} sizes="(min-width:900px) 520px, 100vw" />
+        </div>
+        <div>
+          <h2 class="rev">Borda alta, marca de forno.</h2>
+          <p class="rev d1">Prosciutto, rúcula e doce de figo sobre molho de tomate: o doce, o salgado e o amargo na mesma fatia.</p>
+          <p class="rev d2 nota">Veja os sabores e preços atualizados no cardápio online.</p>
+          <a class="btn btn-tijolo rev d3" href="/cardapio/">Ver o cardápio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="forno" id="do-forno-a-mesa">
+    <div class="wrap">
+      <div class="forno-grade">
+        <div>
+          <h2 class="rev">Do forno à mesa, ou à sua casa.</h2>
+          <p class="rev d1">Pizza saindo do forno para a mesa ou para viagem, em caixa própria.</p>
+          <figure class="rev d2">
+            <Image src={forno} alt="Mãos do pizzaiolo ajeitando uma pizza branca dourada dentro da caixa octogonal para viagem" widths={[360, 490]} sizes="(min-width:900px) 440px, 100vw" />
+          </figure>
+        </div>
+        <div class="pilha">
+          <figure class="rev">
+            <Image src={degust} alt="Mesa com potinhos de molhos e pastas, azeites aromatizados e fatias de limão, montada para uma degustação" widths={[640, 876]} sizes="(min-width:900px) 620px, 100vw" />
+            <figcaption>Já recebemos degustações de molhos e queijos.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="visite" id="visite">
+    <div class="wrap">
+      <h2 class="rev">Venha nos visitar.</h2>
+      <div class="visite-grade">
+        <div class="rev d1">
+          <address>
+            {site.endereco.rua}<br />{site.endereco.bairro}, {site.endereco.cidade} – {site.endereco.uf}<br />CEP {site.endereco.cep}
+          </address>
+          <Horarios />
+          <div class="acoes">
+            <a class="btn btn-ouro" href={waLink} target="_blank" rel="noopener noreferrer">Reservar pelo WhatsApp</a>
+            <a class="btn" href={telLink}>Ligar</a>
+            <a class="btn" href={site.mapaRota} target="_blank" rel="noopener noreferrer">Traçar rota</a>
+          </div>
+          <p style="margin-top:20px">Faixa de preço: {site.faixaPreco}, informada por clientes no Google.</p>
+        </div>
+        <div class="mapa-col rev d2"><Mapa /></div>
+      </div>
+    </div>
+  </section>
+  <Reveal />
+</Base>

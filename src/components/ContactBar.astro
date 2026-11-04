@@ -1,0 +1,9 @@
+---
+import site from '../data/site.json';
+import { telLink, waLink } from '../lib/links.js';
+---
+<nav class="barra" aria-label="Contato rápido">
+  <a href={telLink}>Ligar</a>
+  <a class="ouro" href={waLink} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  <a href={site.mapaRota} target="_blank" rel="noopener noreferrer">Rota</a>
+</nav>

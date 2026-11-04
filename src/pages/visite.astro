@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Status from '../components/Status.astro';
+import Horarios from '../components/Horarios.astro';
+import Mapa from '../components/Mapa.astro';
+import site from '../data/site.json';
+import { telLink, waLink } from '../lib/links.js';
+---
+<Base
+  title="Visite | Horários e endereço da Artesã Forneria"
+  description="Artesã Forneria: R. Padre Charton, 109, Vila Irmãos Arnoni, São Paulo. Quinta a domingo. Telefone (11) 2994-4246 e WhatsApp para reservas."
+  path="/visite/"
+>
+  <section class="visite" style="padding-top:clamp(40px,7vw,96px)">
+    <div class="wrap">
+      <h1 style="font-size:clamp(2.4rem,8vw,6rem);margin-bottom:clamp(28px,4vw,48px)">Visite a Artesã.</h1>
+      <div class="visite-grade">
+        <div>
+          <address>
+            {site.endereco.rua}<br />{site.endereco.bairro}, {site.endereco.cidade} – {site.endereco.uf}<br />CEP {site.endereco.cep}
+          </address>
+          <Status />
+          <div style="height:20px"></div>
+          <Horarios />
+          <div class="acoes">
+            <a class="btn btn-ouro" href={waLink} target="_blank" rel="noopener noreferrer">Reservar pelo WhatsApp</a>
+            <a class="btn" href={telLink}>Ligar {site.telefone.exibicao}</a>
+            <a class="btn" href={site.mapaRota} target="_blank" rel="noopener noreferrer">Traçar rota</a>
+          </div>
+          <p style="margin-top:20px">Cardápio e pedidos: <a class="link-seta" href={site.cardapioUrl} target="_blank" rel="noopener noreferrer">cardápio online</a>. Instagram: <a class="link-seta" href={site.instagram} target="_blank" rel="noopener noreferrer">@artesaforneria</a>.</p>
+          <p>Faixa de preço: {site.faixaPreco}, informada por clientes no Google.</p>
+        </div>
+        <div class="mapa-col"><Mapa /></div>
+      </div>
+    </div>
+  </section>
+</Base>
